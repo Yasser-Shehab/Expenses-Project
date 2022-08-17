@@ -1,9 +1,10 @@
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
+import Card from "../../UI/Card/Card";
 import "./Expenses.css";
 
 function Expenses({ list }) {
   return (
-    <div className="expenses">
+    <Card className="expenses">
       {list.map((expense, index) => {
         return (
           <ExpenseItem
@@ -14,7 +15,7 @@ function Expenses({ list }) {
           />
         );
       })}
-    </div>
+    </Card>
   );
 }
 
