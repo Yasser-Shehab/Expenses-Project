@@ -5,7 +5,8 @@ import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 import { useState } from "react";
 
 function Expenses({ list }) {
-  const [seletedYear, setSelectedYear] = useState("");
+  const [seletedYear, setSelectedYear] = useState("2020");
+  //Filter data
   const selectedYearHanlder = (enteredYear) => {
     console.log(seletedYear);
     setSelectedYear(enteredYear);

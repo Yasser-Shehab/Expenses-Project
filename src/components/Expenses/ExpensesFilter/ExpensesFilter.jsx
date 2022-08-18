@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "./ExpensesFilter.css";
 
 const ExpensesFilter = ({ onSeletedYear, seletedYear }) => {
-  const [year, setYear] = useState("");
   const dropDownHandler = (e) => {
     onSeletedYear(e.target.value);
   };
