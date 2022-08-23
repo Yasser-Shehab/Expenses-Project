@@ -6,19 +6,24 @@ import { useState } from "react";
 
 function Expenses({ list }) {
   const [seletedYear, setSelectedYear] = useState("2020");
-  //Filter data
+  const [filteredList, setFilteredList] = useState(list);
+  console.log(filteredList);
+
+  const filteredExpenses = list.filter((expense) => {
+    return expense.date.getFullYear().toString() == seletedYear;
+  });
+
   const selectedYearHanlder = (enteredYear) => {
-    console.log(seletedYear);
     setSelectedYear(enteredYear);
   };
   return (
     <>
       <Card className="expenses">
         <ExpensesFilter onSeletedYear={selectedYearHanlder} seletedYear={seletedYear} />
-        {list.map((expense, index) => {
+        {filteredExpenses.map((expense) => {
           return (
             <ExpenseItem
-              key={index}
+              key={expense.id}
               title={expense.title}
               amount={expense.amount}
               date={expense.date}
