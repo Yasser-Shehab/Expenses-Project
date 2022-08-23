@@ -16,20 +16,27 @@ function Expenses({ list }) {
   const selectedYearHanlder = (enteredYear) => {
     setSelectedYear(enteredYear);
   };
+
+  let expensesContent = <p>No Expenses Found.</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => {
+      return (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      );
+    });
+  }
+
   return (
     <>
       <Card className="expenses">
         <ExpensesFilter onSeletedYear={selectedYearHanlder} seletedYear={seletedYear} />
-        {filteredExpenses.map((expense) => {
-          return (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          );
-        })}
+        {expensesContent}
       </Card>
     </>
   );
